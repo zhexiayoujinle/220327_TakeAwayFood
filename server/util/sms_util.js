@@ -23,10 +23,10 @@ exports.randomCode = randomCode;
  */
 function sendCode(phone, code, callback) {
     // ACCOUNT_SID,AUTH_TOKEN,AppID要填个人容联云通讯开发者主账号相应信息
-    var ACCOUNT_SID = '';
-    var AUTH_TOKEN = '';
+    var ACCOUNT_SID = '8aaf07087f77bf96017fd4df017f2ee9';
+    var AUTH_TOKEN = 'edd2a31898574dd28188323041c96510';
     var Rest_URL = 'https://app.cloopen.com:8883';
-    var AppID = '';
+    var AppID = '8aaf07087f77bf96017fd4df02632ef0';
     //1. 准备请求url
     /*
      1.使用MD5加密（账户Id + 账户授权令牌 + 时间戳）。其中账户Id和账户授权令牌根据url的验证级别对应主账户。
