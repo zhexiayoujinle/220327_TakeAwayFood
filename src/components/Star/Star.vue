@@ -50,7 +50,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" ref="stylesheet/styles">
+<style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixins.styl'
 .star // 2x 图3x 图
     float: left

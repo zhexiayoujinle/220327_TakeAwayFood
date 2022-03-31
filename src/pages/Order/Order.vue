@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style  lang="stylus" ref="stylesheet/styles">
+<style  lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixins.styl'
 .order // 订单
     .order_no_login

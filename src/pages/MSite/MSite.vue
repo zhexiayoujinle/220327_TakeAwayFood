@@ -2,12 +2,21 @@
     <section class="msite">
         <!--首页头部-->
         <HeaderTop :title="address.name">
-            <span class="header_search" slot="left">
+            <router-link class="header_search" slot="left" to="/Search">
                 <i class="iconfont icon-sousuo"></i>
-            </span>
-            <span class="header_login" slot="right">
-                <span class="header_login_text">登录|注册</span>
-            </span>
+            </router-link>
+            <router-link
+                class="header_login"
+                slot="right"
+                :to="userInfo._id ? 'userInfo' : '/login'"
+            >
+                <span class="header_login_text" v-if="!userInfo._id"
+                    >登录|注册</span
+                >
+                <span class="header_login_text" v-else
+                    ><i class="iconfont icon-person"></i
+                ></span>
+            </router-link>
         </HeaderTop>
 
         <!--首页导航-->
@@ -35,7 +44,7 @@
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
             </div>
-            <img src="./images/msite_back.svg" alt="back" v-else>
+            <img src="./images/msite_back.svg" alt="back" v-else />
         </nav>
         <!--首页附近商家-->
         <div class="msite_shop_list">
@@ -66,7 +75,7 @@ export default {
         this.$store.dispatch("getShops");
     },
     computed: {
-        ...mapState(["address", "categorys"]),  // 根据categorys一维数组生成二维数组
+        ...mapState(["address", "categorys", "userInfo"]), // 根据categorys一维数组生成二维数组
         categorysArr() {
             const { categorys } = this;
             // 准备一个空的二维数组
@@ -90,9 +99,11 @@ export default {
         },
     },
     watch: {
-        categorys(value) {  // categorys数组中有数据了，在异步更新界面之前执行
+        categorys(value) {
+            // categorys数组中有数据了，在异步更新界面之前执行
             // 界面更新就立即创建Swiper对象
-            this.$nextTick(() => {  // 一旦完成界面更新立即调用
+            this.$nextTick(() => {
+                // 一旦完成界面更新立即调用
                 // 创建一个实例对象，来实现轮播
                 new Swiper(".swiper-container", {
                     loop: true, // 循环模式选项
@@ -111,7 +122,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" ref="stylesheet/styles">
+<style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixins.styl'
 .msite
     width: 100%

@@ -2,7 +2,10 @@
     <section class="profile">
         <HeaderTop title="我的"></HeaderTop>
         <section class="profile-number">
-            <router-link to="/login" class="profile-link">
+            <router-link
+                :to="userInfo._id ? '/userInfo' : '/login'"
+                class="profile-link"
+            >
                 <div class="profile_image">
                     <i class="iconfont icon-person"></i>
                 </div>
@@ -92,11 +95,21 @@
                 </div>
             </a>
         </section>
+        <section class="profile_my_order border-1px">
+            <mt-button
+                type="danger"
+                class="mt-button"
+                v-if="userInfo._id"
+                @click="logout"
+                >退出登录</mt-button
+            >
+        </section>
     </section>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import { MessageBox,Toast } from "mint-ui";
 import HeaderTop from "../../components/HeaderTop/HeaderTop.vue";
 export default {
     name: "Profile",
@@ -106,10 +119,24 @@ export default {
     computed: {
         ...mapState(["userInfo"]),
     },
+    methods: {
+        logout() {
+            MessageBox.confirm("确认退出吗？").then(
+                (action) => {
+                    // 请求退出
+                    this.$store.dispatch('logout')
+                    Toast('登出成功')
+                },
+                (action) => {
+                    console.log('登出取消')
+                },
+            );
+        },
+    },
 };
 </script>
 
-<style  lang="stylus" ref="stylesheet/styles">
+<style  lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixins.styl'
 .profile // 我的
     width: 100%
@@ -244,4 +271,6 @@ export default {
                     .icon-jiantou1
                         color: #bbb
                         font-size: 10px
+        .mt-button
+            width: 100%
 </style>

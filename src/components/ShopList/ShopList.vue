@@ -5,6 +5,7 @@
                 class="shop_li border-1px"
                 v-for="(shop, index) in shops"
                 :key="index"
+                @click="$router.push('/shop')"
             >
                 <a>
                     <div class="shop_left">
@@ -90,7 +91,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" ref="stylesheet/styles">
+<style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixins.styl'
 .shop_container
     margin-bottom: 50px

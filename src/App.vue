@@ -14,9 +14,10 @@ export default {
     mounted() {
         // this.$store.dispatch('getAddress')
         this.getAddress()
+        this.getUserInfo()
     },
     methods: {
-        ...mapActions(['getAddress'])
+        ...mapActions(['getAddress','getUserInfo'])
     },
     components: {
         FooterGuide,
@@ -24,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" ref="stylesheet/styles">
+<style lang="stylus" rel="stylesheet/stylus">
     .app
         width 100%;
         height 100%;
