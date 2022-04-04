@@ -12,7 +12,9 @@
                 <router-link to="/shop/info" replace>商家</router-link>
             </div>
         </div>
-        <router-view></router-view>
+        <keep-alive>
+            <router-view />
+        </keep-alive>
     </div>
 </template>
 
@@ -21,7 +23,7 @@ import ShopHeader from "../../components/ShopHeader/ShopHeader.vue";
 export default {
     name: "Shop",
     mounted() {
-        this.$store.dispatch('getShopInfo')
+        this.$store.dispatch("getShopInfo");
     },
     components: {
         ShopHeader,

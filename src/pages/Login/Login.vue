@@ -60,7 +60,7 @@
                                 <input
                                     type="text"
                                     maxlength="11"
-                                    placeholder="手机/邮箱/用户名"
+                                    placeholder="手机/邮箱/用户名/abc"
                                     v-model="name"
                                 />
                             </section>
@@ -68,14 +68,14 @@
                                 <input
                                     type="text"
                                     maxlength="8"
-                                    placeholder="密码"
+                                    placeholder="密码/123"
                                     v-if="showPwd"
                                     v-model="pwd"
                                 />
                                 <input
                                     type="password"
                                     maxlength="8"
-                                    placeholder="密码"
+                                    placeholder="密码/123"
                                     v-else
                                     v-model="pwd"
                                 />
